@@ -1,12 +1,19 @@
 
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100);
 
 body {
-    font-family: "Lato", sans-serif;
+  background: url(https://dl.dropboxusercontent.com/u/23299152/Wallpapers/wallpaper-22705.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
 }
 
 .sidenav {
+    text-align: center;
     height: 100%;
-    width: 160px;
+    width: 13.5%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -139,7 +146,6 @@ input[type=Save] {
     display: block;
     border: 0px;
     color: #fff;
-    text-shadow: 0 1px rgba(0,0,0,0.1); 
     
     font-size: 30px
   }
