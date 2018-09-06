@@ -31,15 +31,15 @@ public class Testar extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		PrintWriter out = response.getWriter();
-		String name = request.getParameter("Nome");
-		String email = request.getParameter("Email");
-		String end = request.getParameter("Endereço");
+		String title = request.getParameter("title");
+		String desc = request.getParameter("desc");
+		String date = request.getParameter("date");
 		out.println("<html>");
 		out.println("<body>");
-		out.println("Nome"+name +"<br>");
+		out.println("Nome "+title +"<br>");
 		out.println("<br>");
-		out.println("Email"+email+"<br>");
-		out.println("Endereõ"+end+"<br>");
+		out.println("Email  "+desc+"<br>");
+		out.println("Endereï¿½  "+date+"<br>");
 		out.println("<br>");
 		out.println("<body>");
 		out.println("<html>");
