@@ -8,6 +8,7 @@ public class Notas {
 	private Integer id;
 	private String nome;
 	private Calendar data;
+	private String desc;
 	
 	
 	public Integer getId() {
@@ -27,6 +28,12 @@ public class Notas {
 		}
 	public void setData(Calendar data) {
 		this.data = data;
+		}
+	public String getDesc() {
+		return this.desc;
+		}
+	public void setDesc(String desc) {
+		this.desc = desc;
 		}
 
 }

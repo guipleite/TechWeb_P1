@@ -7,12 +7,15 @@
 		<title>Editor de notas</title>
 		  <link rel = "stylesheet"
 			type ="text/css"
-			href = "home.css"
+			href = "Form.css"
     		/>
 	</head>
-	<body>
-	
-<a href="editar.jsp" class="previous round">&#8249;</a>
+ <header class="Upp">
+ 	 <a href="display.jsp">Voltar</a>
+    <a href="editar.jsp" class="previous round">Desfazer</a>
+  </header>
+<body>	
+
 <div class="main">
       <section class="card-container">
       
@@ -35,7 +38,7 @@
 	
               	
               		<input style="display: none" type="text" name="id" value="<%=nota.getId()%>">
-              		<input type="submit" value="Concluir">
+        			<a href ="display.jsp">Concluir</a>
       			</form>
       			
       			
