@@ -19,3 +19,5 @@ VALUES ('Mont', '19980525','jakcbajkvbajkbvajkbvjakbba');
 SET GLOBAL time_zone = '-3:00';
 
 SELECT * FROM Notas;
+
+SELECT * FROM Notas WHERE data < '1998-05-30' and data >= '1998-05-03';
