@@ -38,7 +38,7 @@
 	
               	
               		<input style="display: none" type="text" name="id" value="<%=nota.getId()%>">
-        			<a href ="display.jsp">Concluir</a>
+              		<input type="submit" value="Concluir">
       			</form>
       			
       			

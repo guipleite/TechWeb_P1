@@ -24,9 +24,9 @@
         <br>
         <input type="date" id="myDate" name="data" value="Data"><br>
         <br>
-        <input type="button" name="Save" class="form form-Save" value="adicionar"> <br>
+        <input type="submit" name="Save" class="form form-Save" value="Adicionar"> <br>
         <br>
-        <input type="button" name="Save" class="form form-Save" value="Editar" onclick="window.location='editar.jsp';">
+        <input type="button" name="edit" class="form form-Save" value="Editar" onclick="window.location='editar.jsp';">
         
         
         <p id="demo"></p>
@@ -59,15 +59,11 @@
               	<main class="card__description">
                   
               	</main>
-              	
-
-              	
+           
               	<form action="Remover">
               		<input style="display: none" type="text" name="id" value="<%=nota.getId()%>">
               		<input type="submit" value="Delete">
       			</form>
-      			
-      			
           		</article>
 		<% } %>
 		</table>
