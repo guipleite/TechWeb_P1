@@ -36,7 +36,7 @@ public class Alterar extends HttpServlet {
 		 Notas nota = new Notas();
 		 nota.setId(Integer.parseInt(request.getParameter("id")));
 		 nota.setNome(request.getParameter("nome"));
-		 
+		 nota.setDescri(request.getParameter("descri"));
 		 String tempo = request.getParameter("data");
 		 java.util.Date data = null;
 		try {

@@ -5,14 +5,17 @@ CREATE TABLE Notas (
     id INT NOT NULL AUTO_INCREMENT,
     nome VARCHAR(32) NOT NULL,
     data DATE,
+    descri VARCHAR(200) NOT NULL,
     PRIMARY KEY(ID)
      );
 
-INSERT INTO Notas (nome, data)
-VALUES ('Leinin', '20100801');
+INSERT INTO Notas (nome, data, descri)
+VALUES ('Leinin', '20100801','jakcbajkvbajkbvajkbvjakbba');
 
-INSERT INTO Notas (nome, data)
-VALUES ('Mont', '19980525');
+INSERT INTO Notas (nome, data, descri)
+VALUES ('Mont', '19980525','jakcbajkvbajkbvajkbvjakbba');
 
 
 SET GLOBAL time_zone = '-3:00';
+
+SELECT * FROM Notas;

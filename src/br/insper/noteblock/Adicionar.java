@@ -39,6 +39,7 @@ public class Adicionar extends HttpServlet {
 		
 		 Notas nota = new Notas();
 		 nota.setNome(request.getParameter("nome"));
+		 nota.setDescri(request.getParameter("descri"));
 		 
 		 String tempo = request.getParameter("data");
 		 java.util.Date data = null;
