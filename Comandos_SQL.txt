@@ -1,0 +1,18 @@
+CREATE DATABASE testelista;
+USE testelista;
+
+CREATE TABLE Notas (
+    id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(32) NOT NULL,
+    data DATE,
+    PRIMARY KEY(ID)
+     );
+
+INSERT INTO Notas (nome, data)
+VALUES ('Leinin', '20100801');
+
+INSERT INTO Notas (nome, data)
+VALUES ('Mont', '19980525');
+
+
+SET GLOBAL time_zone = '-3:00';
