@@ -40,6 +40,7 @@ public DAO() {
 			nota.setId(rs.getInt("id"));
 			nota.setNome(rs.getString("nome"));
 			Calendar data = Calendar.getInstance();
+			nota.setDescri(rs.getString("descri"));
 			data.setTime(rs.getDate("data"));
 			nota.setData(data);
 			notas.add(nota);
@@ -83,12 +84,13 @@ public DAO() {
 	
 	public void adiciona(Notas nota) {
 		String sql = "INSERT INTO Notas" +
-		"(nome,data) values(?,?)";
+		"(nome,data,descri) values(?,?,?)";
 		try {
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setString(1,nota.getNome());
 		stmt.setDate(2, new java.sql.Date(
 				nota.getData().getTimeInMillis()));
+		stmt.setString(3,nota.getDescri());
 		stmt.execute();
 		stmt.close();
 		} catch (SQLException e) {
@@ -101,13 +103,15 @@ public DAO() {
 	
 	public void altera(Notas nota) {
 		String sql = "UPDATE Notas SET " +
-		 "nome=?, data=? WHERE id=?";
+		 "nome=?, data=? ,descri=? WHERE id=?";
+		System.out.println(sql);
 		try {
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setString(1, nota.getNome());
 		stmt.setDate(2, new Date(nota.getData()
 				.getTimeInMillis()));
-		stmt.setInt(3, nota.getId());
+		stmt.setString(3,nota.getDescri());
+		stmt.setInt(4, nota.getId());
 		stmt.execute();
 		stmt.close();
 		} catch (SQLException e) {

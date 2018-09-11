@@ -12,7 +12,6 @@
 	</head>
  <header class="Upp">
  	 <a href="display.jsp">Voltar</a>
-    <a href="editar.jsp" class="previous round">Desfazer</a>
   </header>
 <body>	
 
@@ -27,8 +26,10 @@
 			<form action="Alterar">
 			  <article class="card">
               	<header class="card__title">
-              		<input type="text" name="nome" value="<%=nota.getNome()%>"><br>
-              		<input type="text" name="data" value="<%=nota.getData()%>"><br>
+              		<input type="text" name="nome" placeholder="<%=nota.getNome()%>"><br>
+              		<input type="text" name="data" placeholder="<%=nota.getData()%>"><br>
+              		<input type="text" name="descri" placeholder="<%=nota.getDescri()%>"><br>
+              		
         			<br>
               	</header>
               

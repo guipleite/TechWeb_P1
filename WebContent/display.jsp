@@ -20,7 +20,7 @@
        <br>
         <input type="text" name="nome"placeholder="Titulo"><br>
         <br>
-        <input type="text" name="desc" placeholder="Descrição"><br>
+        <input type="text" name="descri" placeholder="Descrição"><br>
         <br>
         <input type="date" id="myDate" name="data" value="Data"><br>
         <br>
@@ -53,6 +53,7 @@
 			  <article class="card">
               	<header class="card__title">
                   	<h3><%=nota.getNome()%></h3>
+                  	<h6><%=nota.getDescri()%></h6>
                   	<h5><%=nota.getData().getTime()%></h5>
               	</header>
               
