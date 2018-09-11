@@ -33,14 +33,16 @@ public class Login extends HttpServlet {
 		 usuario.setUser(request.getParameter("user"));
 		 usuario.setSenha(request.getParameter("senha"));		
 		 
-
-		 //if(usuario existe)
-		 	//true response.sendRedirect("/NoteBlock/display.jsp");
-		 //else
-			 //false response.sendRedirect("/NoteBlock/login.jsp");
+		 boolean pass = dao.login(usuario);
 		 
-		 dao.close();
-		response.sendRedirect("/NoteBlock/display.jsp");	}
+		 
+		 
+		 if(pass) {
+		 	response.sendRedirect("/NoteBlock/display.jsp");}
+		 else {
+			response.sendRedirect("/NoteBlock/login.jsp");}
+		 
+		 dao.close();	}
 
 
 

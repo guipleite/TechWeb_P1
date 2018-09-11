@@ -29,7 +29,7 @@ public class DelUsuario extends HttpServlet {
 		// TODO Auto-generated method stub
 		DAO dao = new DAO(); 
 
-		 dao.delUser(Integer.parseInt(request.getParameter("id")));
+		 dao.remUser(Integer.parseInt(request.getParameter("id")));
 		 
 		 dao.close();
 		response.sendRedirect("/NoteBlock/login.jsp");	}

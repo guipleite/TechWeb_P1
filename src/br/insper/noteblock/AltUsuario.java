@@ -41,8 +41,7 @@ public class AltUsuario extends HttpServlet {
 		 dao.altUser(usuario);
 		 
 		 dao.close();
-		response.sendRedirect("/NoteBlock/login.jsp");	}
-
-
+		//response.sendRedirect("/NoteBlock/login.jsp");	
+		 }
 
 }

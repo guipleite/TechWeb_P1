@@ -23,7 +23,7 @@ public DAO() {
 	}
 	 try {
 		connection = DriverManager.getConnection(
-		"jdbc:mysql://localhost/testelista", "root", "116319");
+		"jdbc:mysql://localhost/meus_dados", "root", "hugo1hug");
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -46,7 +46,7 @@ public DAO() {
 			notas.add(nota);
 		
 		}
-		//System.out.println(notas);
+
 	rs.close();
 	stmt.close();
 	} catch (SQLException e) {
@@ -56,31 +56,6 @@ public DAO() {
 	return notas;
 }
 	
-//	public Notas getNota() {
-//		Notas nota = new Notas();
-//		try {
-//		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Notas");
-//		ResultSet rs = stmt.executeQuery();
-//		while (rs.next()) {
-//			Notas nota = new Notas();
-//			nota.setId(rs.getInt("id"));
-//			nota.setNome(rs.getString("nome"));
-//			Calendar data = Calendar.getInstance();
-//			data.setTime(rs.getDate("data"));
-//			nota.setData(data);
-//			notas.add(nota);
-//		
-//		}
-//		//System.out.println(notas);
-//	rs.close();
-//	stmt.close();
-//	} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//	}
-//	return nota;
-//}	
-
 	
 	public void adiciona(Notas nota) {
 		String sql = "INSERT INTO Notas" +
@@ -98,13 +73,26 @@ public DAO() {
 			e.printStackTrace();}
 		}
 	
+	public void addUser(Usuario usuario) {
+		String sql = "INSERT INTO Usuarios" +
+		"(user,senha) values(?,?)";
+		try {
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setString(1,usuario.getUser());
+		stmt.setString(2,usuario.getSenha());
+		stmt.execute();
+		stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();}
+		}
+	
 
 	
 	
 	public void altera(Notas nota) {
 		String sql = "UPDATE Notas SET " +
 		 "nome=?, data=? ,descri=? WHERE id=?";
-		System.out.println(sql);
 		try {
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setString(1, nota.getNome());
@@ -119,6 +107,23 @@ public DAO() {
 			e.printStackTrace();}
 		}
 	
+	
+	public void altUser(Usuario usuario) {
+		String sql = "UPDATE Usuarios SET " +
+		 "user=?, senha=? WHERE id=?";
+		try {
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setString(1, usuario.getUser());
+		stmt.setString(2,usuario.getSenha());
+		stmt.setInt(3, usuario.getId());
+		stmt.execute();
+		stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();}
+		}
+	
+	
 	public void remove(Integer id) {
 		try {
 		PreparedStatement stmt = connection
@@ -130,6 +135,68 @@ public DAO() {
 			// TODO Auto-generated catch block
 			e.printStackTrace();}
 		}
+	
+	
+	public void remUser(Integer id) {
+		try {
+		PreparedStatement stmt = connection
+		 .prepareStatement("DELETE FROM Usuarios WHERE id=?");
+		stmt.setLong(1, id);
+		stmt.execute();
+		stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();}
+		}
+	
+
+	public boolean login(Usuario usuario) {
+		boolean pass = false;
+		String sql = "SELECT user, senha FROM Usuarios WHERE user = ? AND senha = ?";
+		try {
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setString(1, usuario.getUser());
+			stmt.setString(2,usuario.getSenha());
+			stmt.execute();
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				  String username = rs.getString("user");
+				  String usersenha = rs.getString("senha");
+			if (usuario.getUser().equals(username) && usuario.getSenha().equals(usersenha)){
+				pass = true;}
+			}
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();}
+		
+		return pass;
+		}
+	
+	public Usuario showUser(Integer id) {
+		Usuario usuario = new Usuario();
+		String sql = "SELECT user, senha FROM Usuarios iduser=?";
+		try {
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, id);
+			stmt.execute();
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				usuario.setUser(rs.getString("user"));
+				usuario.setSenha(rs.getString("senha"));
+			}
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();}
+		
+		return usuario ;
+		}
+
+	
+	
 	
 	public void close() {
 		try {

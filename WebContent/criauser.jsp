@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Login NoteBlock</title>
+		<title>Criando usuário</title>
 	  <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
 	
 	    <link rel="stylesheet" href="Login.css" media="screen" type="text/css" />
@@ -13,16 +13,14 @@
 	<body>
 	
 	  <div class="login-card">
-	    <h1>Card Block</h1><br>
-	  <form action=Login>
-	    <input type="text" name="user" placeholder="Usuário">
-	    <input type="senha" name="senha" placeholder="Senha">
-	    <input type="submit" name="login" class="login login-submit" value="Login">
+	    <h1>Insira seus dados</h1><br>
+	  <form action=AddUsuario>
+	    <input type="text" name="user" value="Usuário">
+	    <input type="senha" name="senha" value="Senha">
+	    <input type="submit" name="Criar conta" class="login login-submit" value="criar">
 	  </form>
 	
-	  <div class="login-help">
-	    <a href="#">Criar Usuário</a>
-	  </div>
+
 	</div>
 	
 	</body>

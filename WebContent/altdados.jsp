@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Login NoteBlock</title>
+		<title>Editando dados</title>
 	  <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
 	
 	    <link rel="stylesheet" href="Login.css" media="screen" type="text/css" />
@@ -13,11 +13,15 @@
 	<body>
 	
 	  <div class="login-card">
-	    <h1>Card Block</h1><br>
-	  <form action=Login>
-	    <input type="text" name="user" placeholder="Usuário">
-	    <input type="senha" name="senha" placeholder="Senha">
-	    <input type="submit" name="login" class="login login-submit" value="Login">
+	    <h1>Dados</h1><br>
+	  <form action=AltUsuario >
+	  <%@ page import="java.util.*,br.insper.noteblock.*"  %>
+	  <% 	DAO dao = new DAO(); 
+	  //substituir 5 pelo userid
+	  Usuario atual = dao.showUser(5);%>
+	    <input type="text" name="user" value="<%=atual.getUser()%>">
+	    <input type="senha" name="senha" value="<%=atual.getSenha()%>">
+	    <input type="submit" name="alterar" class="login login-submit" value="Alterar dados">
 	  </form>
 	
 	  <div class="login-help">

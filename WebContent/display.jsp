@@ -14,7 +14,7 @@
   
   <div class="sidenav">
     
-    <h3>Nova Nota</h3>
+    <h3>Novo evento</h3>
     
     <form action="Adicionar">
        <br>
