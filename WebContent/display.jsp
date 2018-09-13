@@ -27,37 +27,25 @@
         <input type="submit" name="Save" class="form form-Save" value="Adicionar"> 
         
         <input type="button" name="edit" class="form form-Save" value="Editar" onclick="window.location='editar.jsp';">
-        
-        
-        
-        
-        <h4>Filtrar</h4>
-        <h6>De:</h6>
-        <input type="date" id="myDate" name="dataInicial" value="Data"><br>
-        <h6>Até:</h6>
-        <input type="date" id="myDate" name="dataFinal" value="Data"><br>
-        
-        
-        
-        <p id="demo"></p>
-        
-        <script>
-        function myFunction() {
-            var x = document.getElementById("myDate").value;
-            document.getElementById("demo").innerHTML = x;
-        }
-        </script>
-      </form>     
-
-  </div>
+  	</form>
   
-  
-  <style>
+<style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
 /* Button used to open the contact form - fixed at the bottom of the page */
-.open-button {
+.config-button {
+  color: white;
+  padding: 0px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  left: 0%;
+}
+
+.filter-button {
   color: white;
   padding: 16px 20px;
   border: none;
@@ -65,7 +53,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   opacity: 0.8;
   position: fixed;
   bottom: 23px;
-  right: 28px;
+  left: 9%;
 }
 
 /* The popup form - hidden by default */
@@ -73,7 +61,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   display: none;
   position: fixed;
   bottom: 0;
-  right: 15px;
+  left: 15px;
   border: 3px solid #f1f1f1;
   z-index: 9;
 }
@@ -109,10 +97,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
   opacity: 1;
 }
 </style>
-</head>
-<body>
 
-<input type="image" src="https://image.flaticon.com/icons/svg/61/61094.svg" width="68" height="68" class="open-button" onclick="openForm()">Open Form</input>
+
+<input type="image" src="https://image.flaticon.com/icons/svg/61/61094.svg" width="68" height="68" class="config-button" onclick="openForm()"></input>
 
 <div class="form-popup" id="myForm">
   <form action="Config" class="form-container">
@@ -122,20 +109,63 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <input type="button" name="edit" class="form form-Save" value="Sair" onclick="window.location='login.jsp';">
     <input type="submit" name="Del" class="form form-Save" value="Apagar Conta"> 
     
-    
     <button type="button" class="btn cancel" onclick="closeForm()">X</button>
+	
+	<script>
+	function openForm() {
+	    document.getElementById("myForm").style.display = "block";
+	}
+	
+	function closeForm() {
+	    document.getElementById("myForm").style.display = "none";
+	}
+	</script>
   </form>
-</div>
+  </div>
+  
+  
+  <br>
+	
+	
 
-<script>
-function openForm() {
-    document.getElementById("myForm").style.display = "block";
-}
+        <input type="image" src="https://static.thenounproject.com/png/14173-200.png" width="68" height="68" class="filter-button" onclick="openForm3()"></input>
 
-function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-}
-</script>
+		<div class="form-popup" id="myForm3">
+		  <form action="Filter" class="form-container">
+		    <h1>Filtrar</h1>
+		
+	        <h6>De:</h6>
+	        <input type="date" id="myDate" name="dataInicial" value="Data"><br>
+	        <h6>Até:</h6>
+	        <input type="date" id="myDate" name="dataFinal" value="Data"><br>
+	        <input type="button" name="edit" class="form form-Save" value="Filtrar" onclick="window.location='filtro.jsp';">
+	        
+		    
+		    
+		    <button type="button" class="btn cancel" onclick="closeForm3()">X</button>
+		  </form>
+		</div>
+		
+		<script>
+		function openForm3() {
+		    document.getElementById("myForm3").style.display = "block";
+		}
+		
+		function closeForm3() {
+		    document.getElementById("myForm3").style.display = "none";
+		}
+		</script>
+        
+        <p id="demo"></p>
+        
+        <script>
+        function myFunction() {
+            var x = document.getElementById("myDate").value;
+            document.getElementById("demo").innerHTML = x;
+        }
+        </script>
+
+  </div>
 
 </body>
   
