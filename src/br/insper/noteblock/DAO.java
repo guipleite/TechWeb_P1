@@ -23,7 +23,7 @@ public DAO() {
 	}
 	 try {
 		connection = DriverManager.getConnection(
-		"jdbc:mysql://localhost/meus_dados", "root", "hugo1hug");
+		"jdbc:mysql://localhost/testelista", "root", "116319");
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

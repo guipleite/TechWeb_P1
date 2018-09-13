@@ -14,7 +14,7 @@
   
   <div class="sidenav">
     
-    <h3>Novo evento</h3>
+    <h3>Nova Nota</h3>
     
     <form action="Adicionar">
        <br>
@@ -58,7 +58,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
-  background-color: #555;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -67,7 +66,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
   position: fixed;
   bottom: 23px;
   right: 28px;
-  width: 280px;
 }
 
 /* The popup form - hidden by default */
@@ -114,7 +112,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </head>
 <body>
 
-<button type="image" src="https://image.flaticon.com/icons/svg/61/61094.svg"  class="open-button" onclick="openForm()">Open Form</button>
+<input type="image" src="https://image.flaticon.com/icons/svg/61/61094.svg" width="68" height="68" class="open-button" onclick="openForm()">Open Form</input>
 
 <div class="form-popup" id="myForm">
   <form action="Config" class="form-container">
