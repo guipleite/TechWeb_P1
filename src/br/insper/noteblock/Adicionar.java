@@ -56,7 +56,7 @@ public class Adicionar extends HttpServlet {
 		 dao.adiciona(nota);
 		 
 		 dao.close();
-		response.sendRedirect("/NoteBlock/filtro.jsp");
+		response.sendRedirect("/NoteBlock/display.jsp");
 		
 	}
 

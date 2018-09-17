@@ -45,7 +45,7 @@ public class Filtar {
 		 dao.getFilter();
 		 
 		 dao.close();
-		response.sendRedirect("/NoteBlock/display.jsp");
+		response.sendRedirect("/NoteBlock/filtro.jsp");
 		
 	}
 }
