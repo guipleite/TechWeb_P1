@@ -17,6 +17,7 @@
     <h3>Filtro</h3>
     
     <input type="image" src="https://static.thenounproject.com/png/344330-200.png" width="68" height="68" class="back-button" onclick="window.location='display.jsp';"></input>
+    
     <form action=Filtrar>
 	    <h6>De:</h6>
 		<input type="date" id="myDate" name="dataInicial" value="0000-00-00"><br>
@@ -131,7 +132,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 		
 		
 		<% DAO dao = new DAO();
-		 List<Notas> Notas = dao.getFilter();
+		String date1 = request.getParameter("dataInicial");
+		String date2 = request.getParameter("dataFinal");
+
+				
+		System.out.println(date1);
+		System.out.println(date2);
+		 List<Notas> Notas = dao.getFilter(date1,date2);
 
 		 for (Notas nota : Notas ) { %>
 

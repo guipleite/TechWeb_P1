@@ -17,12 +17,14 @@ public class Filtar {
 		
 		DAO dao = new DAO();
 		
-		 Notas nota = new Notas();
+		 //Notas nota = new Notas();
 		 String ini = request.getParameter("dataInicial");
 		 String fin = request.getParameter("dataFinal");
+		 System.out.println(ini);
+		System.out.println(fin);
 		 
 		
-		java.util.Date dataI = null;
+		/*java.util.Date dataI = null;
 		java.util.Date dataF = null;
 
 		try {
@@ -40,9 +42,9 @@ public class Filtar {
 		 dataNotaI.setTime(dataI);
 		 nota.setDataInicial(dataNotaI);
 		 dataNotaF.setTime(dataF);
-		 nota.setDataFinal(dataNotaF);
+		 nota.setDataFinal(dataNotaF);*/
 
-		 dao.getFilter();
+		 dao.getFilter(ini,fin);
 		 
 		 dao.close();
 		response.sendRedirect("/NoteBlock/filtro.jsp");

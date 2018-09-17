@@ -57,17 +57,18 @@ public DAO() {
 	return notas;
 }
 	
-	public List<Notas> getFilter(){
+	public List<Notas> getFilter(String date1,String date2 ){
 		
 		String sql = "SELECT * FROM Notas WHERE data <= ? and data >= ? ";
 		//String sql = "SELECT * FROM Notas WHERE data <= '1998-05-30' and data >= '1998-05-03'";
 
-		String date1 ="1998-05-30";//request.getParameter("dataInicial");
+	//	String date1 ="1998-05-30";//request.getParameter("dataInicial");
 
-		String date2 ="1998-05-03" ;//request.getParameter("dataFinal");
-
-
+//		String date2 ="1998-05-03" ;//request.getParameter("dataFinal");
 		
+		System.out.println(date1);
+		System.out.println(date2);
+
 		
 		List<Notas> notas = new ArrayList<Notas>();
 		try {
