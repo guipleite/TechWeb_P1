@@ -123,47 +123,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
   </form>
   </div>
   
-  
-  <br>
-	
-	
+  <input type="image" src="https://www.materialui.co/materialIcons/action/search_white_72x72.png" width="68" height="68" class="filter-button" onclick="window.location='filtro.jsp';"></input>
 
-        <input type="image" src="https://static.thenounproject.com/png/14173-200.png" width="68" height="68" class="filter-button" onclick="openForm3()"></input>
-
-		<div class="form-popup" id="myForm3">
-		  <form action="Filter" class="form-container">
-		    <h1>Filtrar</h1>
-		
-	        <h6>De:</h6>
-	        <input type="date" id="myDate" name="dataInicial" value="Data"><br>
-	        <h6>Até:</h6>
-	        <input type="date" id="myDate" name="dataFinal" value="Data"><br>
-	        <input type="button" name="edit" class="form form-Save" value="Filtrar" onclick="window.location='filtro.jsp';">
-	        
-		    
-		    
-		    <button type="button" class="btn cancel" onclick="closeForm3()">X</button>
-		  </form>
-		</div>
-		
-		<script>
-		function openForm3() {
-		    document.getElementById("myForm3").style.display = "block";
-		}
-		
-		function closeForm3() {
-		    document.getElementById("myForm3").style.display = "none";
-		}
-		</script>
-        
-        <p id="demo"></p>
-        
-        <script>
-        function myFunction() {
-            var x = document.getElementById("myDate").value;
-            document.getElementById("demo").innerHTML = x;
-        }
-        </script>
 
   </div>
 

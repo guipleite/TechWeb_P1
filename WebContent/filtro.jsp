@@ -16,10 +16,15 @@
     
     <h3>Filtro</h3>
     
-    <input type="button" name="edit" class="form form-Save" value="Editar" onclick="window.location='editar.jsp';">
     <input type="image" src="https://static.thenounproject.com/png/344330-200.png" width="68" height="68" class="back-button" onclick="window.location='display.jsp';"></input>
-    
-    
+    <form action=Filtrar>
+	    <h6>De:</h6>
+		<input type="date" id="myDate" name="dataInicial" value="0000-00-00"><br>
+		<h6>Até:</h6>
+		<input type="date" id="myDate" name="dataFinal" value="9999-99-99"><br>
+		<input type="submit" name="Filter" class="form form-Save" value="Filtrar">
+	 </form>
+	 
   
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
@@ -114,23 +119,20 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	</script>
   </form>
   </div>
-  
-  
-  <br>
-	
-
-
-  </div>
+ </div>
 
 </body>
   
   <div class="main">
       <section class="card-container">
       
-				<%@ page import="java.util.*,br.insper.noteblock.*" %>
+				<%@ page import="java.util.*,br.insper.noteblock.*, org.w3c.dom.Document" %>
 		<table border='1'>
+		
+		
 		<% DAO dao = new DAO();
-		 List<Notas> Notas = dao.getLista();
+		 List<Notas> Notas = dao.getFilter();
+
 		 for (Notas nota : Notas ) { %>
 
 			  <article class="card">

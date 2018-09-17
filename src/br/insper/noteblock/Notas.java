@@ -9,6 +9,9 @@ public class Notas {
 	private String nome;
 	private Calendar data;
 	private String descri;
+	private Calendar dataInicial;
+	private Calendar dataFinal;
+
 	
 	
 	public Integer getId() {
@@ -35,5 +38,17 @@ public class Notas {
 	public void setDescri(String descri) {
 		this.descri = descri;
 		}
-
+	public Calendar getDataInicial() {
+		return this.dataInicial;
+		}
+	public void setDataInicial(Calendar string) {
+		this.dataInicial = string;
+		}
+	public Calendar getDataFinal() {
+		return this.dataFinal;
+		}
+	public void setDataFinal(Calendar dataFinal) {
+		this.dataFinal = dataFinal;
+		}
 }
+	

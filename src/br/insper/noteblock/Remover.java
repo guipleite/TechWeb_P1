@@ -33,23 +33,15 @@ public class Remover extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		DAO dao = new DAO();
-		
-
-		 
-
-		
-		 
 
 		 dao.remove(Integer.parseInt(request.getParameter("id")));
 		 
 		 dao.close();
-		response.sendRedirect("/NoteBlock/display.jsp");
+		response.sendRedirect("/NoteBlock/display.jsp");///////ou fitro
 		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-
-
 }

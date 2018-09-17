@@ -52,13 +52,11 @@ public class Adicionar extends HttpServlet {
 		 Calendar dataNota = Calendar.getInstance();
 		 dataNota.setTime(data);
 		 nota.setData(dataNota);
-		
-		 
 
 		 dao.adiciona(nota);
 		 
 		 dao.close();
-		response.sendRedirect("/NoteBlock/display.jsp");
+		response.sendRedirect("/NoteBlock/filtro.jsp");
 		
 	}
 

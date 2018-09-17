@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+
 public class DAO {
 	
 private Connection connection = null;
@@ -55,6 +56,51 @@ public DAO() {
 	}
 	return notas;
 }
+	
+	public List<Notas> getFilter(){
+		
+		String sql = "SELECT * FROM Notas WHERE data <= ? and data >= ? ";
+		//String sql = "SELECT * FROM Notas WHERE data <= '1998-05-30' and data >= '1998-05-03'";
+
+		String date1 ="1998-05-30";//request.getParameter("dataInicial");
+
+		String date2 ="1998-05-03" ;//request.getParameter("dataFinal");
+
+
+		
+		
+		List<Notas> notas = new ArrayList<Notas>();
+		try {
+		PreparedStatement stmt = connection.prepareStatement(sql);
+
+		stmt.setString(1,date1);
+		stmt.setString(2,date2);
+		
+		ResultSet rs = stmt.executeQuery();
+
+		
+		//stmt.setDate(1 ,nota.setDataInicial("dataInicial"));
+		//stmt.setDate(2, nota.setDataFinal("dataFinal"));
+		while (rs.next()) {
+			Notas note = new Notas();//Creates the card
+			note.setId(rs.getInt("id"));
+			note.setNome(rs.getString("nome"));
+			Calendar data = Calendar.getInstance();
+			note.setDescri(rs.getString("descri"));
+			data.setTime(rs.getDate("data"));
+			note.setData(data);
+			notas.add(note);
+		}
+
+	rs.close();
+	stmt.close();
+	} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	}
+	return notas;
+}
+	
 	
 	
 	public void adiciona(Notas nota) {
