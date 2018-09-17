@@ -35,15 +35,11 @@ public class Remover extends HttpServlet {
 		DAO dao = new DAO();
 		
 
-		 
-
-		
-		 
-
 		 dao.remove(Integer.parseInt(request.getParameter("id")));
 		 
 		 dao.close();
-		response.sendRedirect("/NoteBlock/display.jsp");
+		request.setAttribute("uid",request.getParameter("uid"));
+		request.getRequestDispatcher("/display.jsp").forward(request, response);
 		
 	}
 

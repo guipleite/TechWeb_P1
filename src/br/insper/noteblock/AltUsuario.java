@@ -30,7 +30,7 @@ public class AltUsuario extends HttpServlet {
 		DAO dao = new DAO();
 		
 		 Usuario usuario = new Usuario();
-		 usuario.setId(Integer.parseInt(request.getParameter("id")));
+		 usuario.setId(Integer.parseInt((String)request.getParameter("uid")));
 		 usuario.setUser(request.getParameter("user"));
 		 usuario.setSenha(request.getParameter("senha"));
 		 
@@ -41,7 +41,8 @@ public class AltUsuario extends HttpServlet {
 		 dao.altUser(usuario);
 		 
 		 dao.close();
-		//response.sendRedirect("/NoteBlock/login.jsp");	
+		request.setAttribute("uid",request.getParameter("uid"));
+		request.getRequestDispatcher("/display.jsp").forward(request, response);	
 		 }
 
 }

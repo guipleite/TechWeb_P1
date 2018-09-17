@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class AttributePasser
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/AttributePasser")
+public class AttributePasser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public AttributePasser() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,25 +27,15 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		DAO dao = new DAO();
+		String uid = request.getParameter("uid");
+		String endereco = request.getParameter("local");
 		
-		 Usuario usuario = new Usuario();
-		 usuario.setUser(request.getParameter("user"));
-		 usuario.setSenha(request.getParameter("senha"));		
-		 
-		 Integer userid = dao.login(usuario);
-		 
-		 
-		 
-		 if(userid != null) {
-			request.setAttribute("uid",(userid).toString());
-			request.getRequestDispatcher("/display.jsp").forward(request, response);
-			}
-		 else {
-			response.sendRedirect("/NoteBlock/login.jsp");}
-		 
-		 dao.close();	}
 
+		
+		request.setAttribute("uid",uid);
+		request.getRequestDispatcher(endereco).forward(request, response);
+		
+	}
 
 
 

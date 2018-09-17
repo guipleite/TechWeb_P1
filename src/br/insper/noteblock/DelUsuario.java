@@ -27,9 +27,9 @@ public class DelUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		DAO dao = new DAO(); 
-
-		 dao.remUser(Integer.parseInt(request.getParameter("id")));
+		DAO dao = new DAO();
+		
+		 dao.remUser(Integer.parseInt((String)request.getParameter("uid")));
 		 
 		 dao.close();
 		response.sendRedirect("/NoteBlock/login.jsp");	}

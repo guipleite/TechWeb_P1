@@ -54,12 +54,17 @@ public class Adicionar extends HttpServlet {
 		 nota.setData(dataNota);
 		
 		 
+		 /////////
+		 nota.setIduser(Integer.parseInt(request.getParameter("uid")));
+		 /////////
+		 
 
 		 dao.adiciona(nota);
 		 
 		 dao.close();
-		response.sendRedirect("/NoteBlock/display.jsp");
-		
+		//response.sendRedirect("/NoteBlock/display.jsp");
+		request.setAttribute("uid",request.getParameter("uid"));
+		request.getRequestDispatcher("/display.jsp").forward(request, response);
 	}
 
 	/**

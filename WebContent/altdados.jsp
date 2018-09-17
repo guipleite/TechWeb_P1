@@ -16,17 +16,13 @@
 	    <h1>Dados</h1><br>
 	  <form action=AltUsuario >
 	  <%@ page import="java.util.*,br.insper.noteblock.*"  %>
-	  <% 	DAO dao = new DAO(); 
-	  //substituir 5 pelo userid
-	  Usuario atual = dao.showUser(5);%>
+	  <% 	DAO dao = new DAO();
+	  Usuario atual = dao.showUser((Integer.parseInt((String)request.getAttribute("uid"))));%>
+	  	<input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
 	    <input type="text" name="user" value="<%=atual.getUser()%>">
 	    <input type="senha" name="senha" value="<%=atual.getSenha()%>">
 	    <input type="submit" name="alterar" class="login login-submit" value="Alterar dados">
 	  </form>
-	
-	  <div class="login-help">
-	    <a href="#">Criar Usuário</a>
-	  </div>
 	</div>
 	
 	</body>

@@ -4,13 +4,20 @@ import java.util.Calendar;
 
 public class Notas {
 	
-	
+	private Integer iduser;
 	private Integer id;
 	private String nome;
 	private Calendar data;
 	private String descri;
 	
 	
+	
+	public Integer getIduser() {
+		return this.iduser;
+		}
+	public void setIduser(Integer iduser) {
+		this.iduser = iduser;
+		}
 	public Integer getId() {
 		return this.id;
 		}

@@ -49,12 +49,16 @@ public class Alterar extends HttpServlet {
 		 dataNota.setTime(data);
 		 nota.setData(dataNota);
 		
-		 
+		 /////////
+		 nota.setIduser(Integer.parseInt(request.getParameter("uid")));
+		 /////////
 
 		 dao.altera(nota);
 		 
 		 dao.close();
-		response.sendRedirect("/NoteBlock/display.jsp");
+		
+		request.setAttribute("uid",request.getParameter("uid"));
+		request.getRequestDispatcher("/display.jsp").forward(request, response);
 		
 	}
 

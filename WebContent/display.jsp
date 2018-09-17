@@ -12,6 +12,7 @@
 	</head>
   <body>
   
+
   <div class="sidenav">
     
     <h3>Novo evento</h3>
@@ -24,12 +25,8 @@
         <br>
         <input type="date" id="myDate" name="data" value="Data">
         <br>
+        <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
         <input type="submit" name="Save" class="form form-Save" value="Adicionar"> 
-        
-        <input type="button" name="edit" class="form form-Save" value="Editar" onclick="window.location='editar.jsp';">
-        
-        
-        
         
         <h4>Filtrar</h4>
         <h6>De:</h6>
@@ -39,15 +36,13 @@
         
         
         
-        <p id="demo"></p>
         
-        <script>
-        function myFunction() {
-            var x = document.getElementById("myDate").value;
-            document.getElementById("demo").innerHTML = x;
-        }
-        </script>
-      </form>     
+      </form>
+       <form action="AttributePasser">
+          <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
+          <input style="display: none" type="text" name="local" value="/editar.jsp">
+	      <input type="submit" class="form form-Save" value="Editar">
+      </form>  
 
   </div>
   
@@ -117,13 +112,32 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <button type="image" src="https://image.flaticon.com/icons/svg/61/61094.svg"  class="open-button" onclick="openForm()">Open Form</button>
 
 <div class="form-popup" id="myForm">
-  <form action="Config" class="form-container">
+  <form action ="Config" class="form-container">
     <h1>Configurações</h1>
 
-    <input type="button" name="edit" class="form form-Save" value="Editar" onclick="window.location='wow.jsp';">
-    <input type="button" name="edit" class="form form-Save" value="Sair" onclick="window.location='login.jsp';">
-    <input type="submit" name="Del" class="form form-Save" value="Apagar Conta"> 
+
+	<form>
+		<input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
+		
+	</form>
+
+	<form >
+    	<input type="button" name="sair" class="form form-Save" value="Sair"  onclick="window.location='login.jsp';">
+    </form>
+
+      <form action="AttributePasser">
+          <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
+          <input style="display: none" type="text" name="local" value="/altdados.jsp">
+	      <input type="submit" class="form form-Save" value="Editar">
+      </form> 
     
+    <form action=DelUsuario>
+    	<input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
+    	<input type="submit"  class="form form-Save" value="Apagar Conta"> 
+    </form>
+    
+
+
     
     <button type="button" class="btn cancel" onclick="closeForm()">X</button>
   </form>
@@ -146,9 +160,11 @@ function closeForm() {
       
 				<%@ page import="java.util.*,br.insper.noteblock.*" %>
 		<table border='1'>
-		<% DAO dao = new DAO();
+		<%  
+		DAO dao = new DAO();
 		 List<Notas> Notas = dao.getLista();
-		 for (Notas nota : Notas ) { %>
+		 for (Notas nota : Notas ) {
+			 if(nota.getIduser().equals(Integer.parseInt((String)request.getAttribute("uid")))){%>
 
 			  <article class="card">
               	<header class="card__title">
@@ -162,11 +178,12 @@ function closeForm() {
               	</main>
            
               	<form action="Remover">
+              	    <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
               		<input style="display: none" type="text" name="id" value="<%=nota.getId()%>">
               		<input type="submit" value="Delete">
       			</form>
           		</article>
-		<% } %>
+		<% }} %>
 		</table>
 
       </section>

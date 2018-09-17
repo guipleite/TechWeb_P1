@@ -23,7 +23,7 @@ public DAO() {
 	}
 	 try {
 		connection = DriverManager.getConnection(
-		"jdbc:mysql://localhost/meus_dados", "root", "hugo1hug");
+		"jdbc:mysql://localhost/EventNote", "root", "TecWeb4sem2018");
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -38,6 +38,7 @@ public DAO() {
 		while (rs.next()) {
 			Notas nota = new Notas();
 			nota.setId(rs.getInt("id"));
+			nota.setIduser(rs.getInt("userid"));
 			nota.setNome(rs.getString("nome"));
 			Calendar data = Calendar.getInstance();
 			nota.setDescri(rs.getString("descri"));
@@ -59,13 +60,14 @@ public DAO() {
 	
 	public void adiciona(Notas nota) {
 		String sql = "INSERT INTO Notas" +
-		"(nome,data,descri) values(?,?,?)";
+		"(nome,data,descri,userid) values(?,?,?,?)";
 		try {
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setString(1,nota.getNome());
 		stmt.setDate(2, new java.sql.Date(
 				nota.getData().getTimeInMillis()));
 		stmt.setString(3,nota.getDescri());
+		stmt.setInt(4,nota.getIduser());
 		stmt.execute();
 		stmt.close();
 		} catch (SQLException e) {
@@ -73,19 +75,47 @@ public DAO() {
 			e.printStackTrace();}
 		}
 	
-	public void addUser(Usuario usuario) {
-		String sql = "INSERT INTO Usuarios" +
-		"(user,senha) values(?,?)";
+	public boolean addUser(Usuario usuario) {
+		boolean existe = false;
+		List<Usuario> usuarios = new ArrayList<Usuario>();
 		try {
-		PreparedStatement stmt = connection.prepareStatement(sql);
-		stmt.setString(1,usuario.getUser());
-		stmt.setString(2,usuario.getSenha());
-		stmt.execute();
-		stmt.close();
-		} catch (SQLException e) {
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Usuarios");
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			Usuario usuariox = new Usuario();
+			usuariox.setId(rs.getInt("id"));
+			usuariox.setUser(rs.getString("user"));
+			usuariox.setSenha(rs.getString("senha"));
+			usuarios.add(usuariox);		
+		}
+		rs.close();
+		stmt.close();}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();}
+		for(int i=0; i < usuarios.size(); i++){
+			if (usuarios.get(i).getUser().equals(usuario.getUser()) && usuarios.get(i).getSenha().equals(usuario.getSenha())){
+				existe = true;
+			}}
+		if(!(existe)) {
+			String sql = "INSERT INTO Usuarios" +
+					"(user,senha) values(?,?)";
+			try {
+			PreparedStatement stmt2 = connection.prepareStatement(sql);
+			stmt2.setString(1,usuario.getUser());
+			stmt2.setString(2,usuario.getSenha());
+			stmt2.execute();
+			stmt2.close();}
+			catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();}
+			
+			
 		}
+		return existe;
+	}
+		
+		
+
 	
 
 	
@@ -139,20 +169,25 @@ public DAO() {
 	
 	public void remUser(Integer id) {
 		try {
-		PreparedStatement stmt = connection
-		 .prepareStatement("DELETE FROM Usuarios WHERE id=?");
-		stmt.setLong(1, id);
-		stmt.execute();
-		stmt.close();
+		PreparedStatement stmt1 = connection
+		 .prepareStatement("DELETE FROM Notas WHERE userid=?");
+		PreparedStatement stmt2 = connection
+				 .prepareStatement("DELETE FROM Usuarios WHERE id=?");
+		stmt1.setLong(1, id);
+		stmt1.execute();
+		stmt1.close();
+		stmt2.setLong(1, id);
+		stmt2.execute();
+		stmt2.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();}
 		}
 	
 
-	public boolean login(Usuario usuario) {
-		boolean pass = false;
-		String sql = "SELECT user, senha FROM Usuarios WHERE user = ? AND senha = ?";
+	public Integer login(Usuario usuario) {
+		Integer userid = null;
+		String sql = "SELECT user, senha, id FROM Usuarios WHERE user = ? AND senha = ?";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, usuario.getUser());
@@ -163,20 +198,22 @@ public DAO() {
 			while(rs.next()) {
 				  String username = rs.getString("user");
 				  String usersenha = rs.getString("senha");
+				  String useridstring = rs.getString("id");
 			if (usuario.getUser().equals(username) && usuario.getSenha().equals(usersenha)){
-				pass = true;}
+				userid = Integer.parseInt(useridstring);}
 			}
+			
 			stmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();}
 		
-		return pass;
+		return userid;
 		}
 	
 	public Usuario showUser(Integer id) {
 		Usuario usuario = new Usuario();
-		String sql = "SELECT user, senha FROM Usuarios iduser=?";
+		String sql = "SELECT user, senha FROM Usuarios WHERE id=?";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setLong(1, id);

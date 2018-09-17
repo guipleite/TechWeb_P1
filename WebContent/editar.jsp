@@ -11,7 +11,12 @@
     		/>
 	</head>
  <header class="Upp">
- 	 <a href="display.jsp">Voltar</a>
+        <form action="AttributePasser">
+          <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
+          <input style="display: none" type="text" name="local" value="/display.jsp">
+	      <input type="submit" class="form form-Save" value="Voltar">
+      </form>
+ 	 
   </header>
 <body>	
 
@@ -22,12 +27,13 @@
 		<table border='1'>
 		<% DAO dao = new DAO();
 		 List<Notas> Notas = dao.getLista();
-		 for (Notas nota : Notas ) { %>
+		 for (Notas nota : Notas ) {
+			 if(nota.getIduser()==Integer.parseInt(request.getParameter("uid"))){%>
 			<form action="Alterar">
 			  <article class="card">
               	<header class="card__title">
               		<input type="text" name="nome" placeholder="<%=nota.getNome()%>"><br>
-              		<input type="text" name="data" placeholder="<%=nota.getData()%>"><br>
+              		<input type="date" name="data" placeholder="<%=nota.getData()%>"><br>
               		<input type="text" name="descri" placeholder="<%=nota.getDescri()%>"><br>
               		
         			<br>
@@ -37,14 +43,14 @@
                   
               	</main>
 	
-              	
+					<input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">              	
               		<input style="display: none" type="text" name="id" value="<%=nota.getId()%>">
               		<input type="submit" value="Concluir">
       			</form>
       			
       			
           		</article>
-		<% } %>
+		<% }} %>
 		</table>
 
       </section>

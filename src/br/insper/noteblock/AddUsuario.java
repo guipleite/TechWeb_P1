@@ -36,9 +36,15 @@ public class AddUsuario extends HttpServlet {
 		 usuario.setSenha(request.getParameter("senha"));		
 		 
 
-		 dao.addUser(usuario);
+		 boolean repetido = dao.addUser(usuario);
+		 
+		 if(repetido) {
+			response.sendRedirect("/NoteBlock/criauser.jsp");
+			}
+		 else {
+			response.sendRedirect("/NoteBlock/login.jsp");}
+		 
 		 
 		 dao.close();
-		response.sendRedirect("/NoteBlock/login.jsp");
 	}
 }

@@ -21,7 +21,7 @@
 	  </form>
 	
 	  <div class="login-help">
-	    <a href="#">Criar Usuário</a>
+	    <a href="criauser.jsp">Criar Usuário</a>
 	  </div>
 	</div>
 	
