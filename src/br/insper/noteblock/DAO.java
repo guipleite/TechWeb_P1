@@ -82,7 +82,7 @@ public DAO() {
 		//stmt.setDate(1 ,nota.setDataInicial("dataInicial"));
 		//stmt.setDate(2, nota.setDataFinal("dataFinal"));
 		while (rs.next()) {
-			Notas note = new Notas();//Creates the card
+			Notas note = new Notas();
 			note.setId(rs.getInt("id"));
 			note.setNome(rs.getString("nome"));
 			Calendar data = Calendar.getInstance();
