@@ -23,7 +23,7 @@ public DAO() {
 	}
 	 try {
 		connection = DriverManager.getConnection(
-		"jdbc:mysql://localhost/EventNote", "root", "TecWeb4sem2018");
+		"jdbc:mysql://localhost/EventNote", "root", "116319");
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -46,6 +46,53 @@ public DAO() {
 			nota.setData(data);
 			notas.add(nota);
 		
+		}
+
+	rs.close();
+	stmt.close();
+	} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	}
+	return notas;
+}
+	
+	
+	public List<Notas> getFilter(String date1,String date2 ){
+		
+		String sql = "SELECT * FROM Notas WHERE data <= ? and data >= ? ";
+		//String sql = "SELECT * FROM Notas WHERE data <= '1998-05-30' and data >= '1998-05-03'";
+
+	//	String date1 ="1998-05-30";//request.getParameter("dataInicial");
+
+//		String date2 ="1998-05-03" ;//request.getParameter("dataFinal");
+		
+		System.out.println(date1);
+		System.out.println(date2);
+
+		
+		List<Notas> notas = new ArrayList<Notas>();
+		try {
+		PreparedStatement stmt = connection.prepareStatement(sql);
+
+		stmt.setString(1,date1);
+		stmt.setString(2,date2);
+		
+		ResultSet rs = stmt.executeQuery();
+
+		
+		//stmt.setDate(1 ,nota.setDataInicial("dataInicial"));
+		//stmt.setDate(2, nota.setDataFinal("dataFinal"));
+		while (rs.next()) {
+			Notas nota = new Notas();
+			nota.setId(rs.getInt("id"));
+			nota.setIduser(rs.getInt("userid"));
+			nota.setNome(rs.getString("nome"));
+			Calendar data = Calendar.getInstance();
+			nota.setDescri(rs.getString("descri"));
+			data.setTime(rs.getDate("data"));
+			nota.setData(data);
+			notas.add(nota);
 		}
 
 	rs.close();

@@ -16,7 +16,7 @@
 	    <h1>Card Block</h1><br>
 	  <form action=Login>
 	    <input type="text" name="user" placeholder="Usuário">
-	    <input type="senha" name="senha" placeholder="Senha">
+	    <input type="text" name="senha" placeholder="Senha">
 	    <input type="submit" name="login" class="login login-submit" value="Login">
 	  </form>
 	

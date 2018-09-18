@@ -10,20 +10,42 @@
 			href = "Form.css"
     		/>
 	</head>
- <header class="Upp">
-        <form action="AttributePasser">
+ 
+ <div class="sidenav">
+    
+    <h3>Editar</h3>
+    
+    <form action="AttributePasser">
           <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
           <input style="display: none" type="text" name="local" value="/display.jsp">
-	      <input type="submit" class="form form-Save" value="Voltar">
+    	  <input type="image" src="https://static.thenounproject.com/png/344330-200.png" width="68" height="68" class="back-button" ></input>
       </form>
- 	 
-  </header>
+ </div>
+        
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+.back-button {
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 90%;
+  left: -1%;
+}
+
+/* The popup form - hidden by default */
+
+</style> 
 <body>	
 
 <div class="main">
       <section class="card-container">
       
-				<%@ page import="java.util.*,br.insper.noteblock.*" %>
+	 <%@ page import="java.util.*,br.insper.noteblock.*" %>
 		<table border='1'>
 		<% DAO dao = new DAO();
 		 List<Notas> Notas = dao.getLista();

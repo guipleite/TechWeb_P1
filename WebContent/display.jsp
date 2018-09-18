@@ -27,33 +27,28 @@
         <br>
         <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
         <input type="submit" name="Save" class="form form-Save" value="Adicionar"> 
-        
-        <h4>Filtrar</h4>
-        <h6>De:</h6>
-        <input type="date" id="myDate" name="dataInicial" value="Data"><br>
-        <h6>Até:</h6>
-        <input type="date" id="myDate" name="dataFinal" value="Data"><br>
-        
-        
-        
-        
       </form>
        <form action="AttributePasser">
           <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
           <input style="display: none" type="text" name="local" value="/editar.jsp">
 	      <input type="submit" class="form form-Save" value="Editar">
       </form>  
-
-  </div>
   
-  
-  <style>
+<style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
-
 /* Button used to open the contact form - fixed at the bottom of the page */
-.open-button {
-  background-color: #555;
+.config-button {
+  color: white;
+  padding: 0px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  left: 0%;
+}
+.filter-button {
   color: white;
   padding: 16px 20px;
   border: none;
@@ -61,29 +56,26 @@ body {font-family: Arial, Helvetica, sans-serif;}
   opacity: 0.8;
   position: fixed;
   bottom: 23px;
-  right: 28px;
-  width: 280px;
+  left: 9%;
 }
-
 /* The popup form - hidden by default */
 .form-popup {
   display: none;
   position: fixed;
   bottom: 0;
-  right: 15px;
+  left: 15px;
   border: 3px solid #f1f1f1;
   z-index: 9;
+    background-color: white;
+  
 }
-
 /* Add styles to the form container */
 .form-container {
   max-width: 300px;
   padding: 10px;
   background-color: white;
 }
-
 /* Full-width input fields */
-
 /* Set a style for the submit/login button */
 .form-container .btn {
   background-color: #4CAF50;
@@ -95,26 +87,22 @@ body {font-family: Arial, Helvetica, sans-serif;}
   margin-bottom:10px;
   opacity: 0.8;
 }
-
 /* Add a red background color to the cancel button */
-.form-container .cancel {
+.form-container .btn-cancel {
   background-color: red;
+  color:red
 }
-
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
 </style>
-</head>
-<body>
 
-<button type="image" src="https://image.flaticon.com/icons/svg/61/61094.svg"  class="open-button" onclick="openForm()">Open Form</button>
+<input type="image" src="https://image.flaticon.com/icons/svg/61/61094.svg" width="68" height="68" class="config-button" onclick="openForm()"></input>
 
 <div class="form-popup" id="myForm">
   <form action ="Config" class="form-container">
     <h1>Configurações</h1>
-
 
 	<form>
 		<input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
@@ -136,10 +124,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     	<input type="submit"  class="form form-Save" value="Apagar Conta"> 
     </form>
     
-
-
-    
-    <button type="button" class="btn cancel" onclick="closeForm()">X</button>
+    <button type="button" class="btn-cancel" onclick="closeForm()">X</button>
   </form>
 </div>
 
@@ -152,6 +137,14 @@ function closeForm() {
     document.getElementById("myForm").style.display = "none";
 }
 </script>
+ <form action="AttributePasser">
+          <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
+          <input style="display: none" type="text" name="local" value="/filtro.jsp">
+		  <input type="image" src="https://www.materialui.co/materialIcons/action/search_white_72x72.png" width="68" height="68" class="filter-button" ></input>
+ </form> 
+</div>
+
+
 
 </body>
   

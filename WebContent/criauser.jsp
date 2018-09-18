@@ -15,9 +15,10 @@
 	  <div class="login-card">
 	    <h1>Insira seus dados</h1><br>
 	  <form action=AddUsuario>
-	    <input type="text" name="user" value="Usuário">
-	    <input type="senha" name="senha" value="Senha">
-	    <input type="submit" name="Criar conta" class="login login-submit" value="criar">
+	    <input type="text" name="user" placeholder="Usuário">
+	    <input type="text" name="senha" placeholder="Senha">
+	    <input type="submit" name="Criar conta" class="login login-submit" value="Criar">
+	   <h6> Caso o usuário esteja disponivel, você será redirecionado para a página de login.</h6>
 	  </form>
 	
 
