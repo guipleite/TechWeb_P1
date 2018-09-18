@@ -23,10 +23,11 @@
       </form>
         
     <form action=Filtrar>
+    	<input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
 	    <h6>De:</h6>
-		<input type="date" id="myDate" name="dataInicial" value="0000-00-00"><br>
+		<input type="date" id="myDate" name="dataInicial" value="Data"><br>
 		<h6>Até:</h6>
-		<input type="date" id="myDate" name="dataFinal" value="9999-99-99"><br>
+		<input type="date" id="myDate" name="dataFinal" value="Data"><br>
 		<input type="submit" name="Filter" class="form form-Save" value="Filtrar">
 	 </form>
 	 
@@ -64,16 +65,17 @@ body {font-family: Arial, Helvetica, sans-serif;}
 		<table border='1'>
 		
 		
+		
 		<% DAO dao = new DAO();
 		String date1 = request.getParameter("dataInicial");
 		String date2 = request.getParameter("dataFinal");
+		
 
 				
-		System.out.println(date1);
-		System.out.println(date2);
-		 List<Notas> Notas = dao.getFilter(date1,date2);
 
-		 for (Notas nota : Notas ) { %>
+		 List<Notas> Notas = dao.getFilter(date1,date2);
+		 for (Notas nota : Notas ) { 
+		 	if(nota.getIduser().equals(Integer.parseInt((String)request.getAttribute("uid")))){%>
 
 			  <article class="card">
               	<header class="card__title">
@@ -91,7 +93,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
               		<input type="submit" value="Delete">
       			</form>
           		</article>
-		<% } %>
+		<% }} %>
 		</table>
 
       </section>
