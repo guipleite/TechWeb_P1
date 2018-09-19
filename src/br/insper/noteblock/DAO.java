@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class DAO {
@@ -29,6 +31,9 @@ public DAO() {
 		e.printStackTrace();
 	}
 	}
+
+	public static final Comparator INSTANCE = new Comparador();
+
 
 	public List<Notas> getLista() {
 		List<Notas> notas = new ArrayList<Notas>();
@@ -54,6 +59,8 @@ public DAO() {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 	}
+		
+	Collections.sort(notas);
 	return notas;
 }
 	
@@ -73,6 +80,38 @@ public DAO() {
 		stmt.setString(1,date1);
 		stmt.setString(2,date2);
 		
+		ResultSet rs = stmt.executeQuery();
+
+		
+		while (rs.next()) {
+			Notas nota = new Notas();
+			nota.setId(rs.getInt("id"));
+			nota.setIduser(rs.getInt("userid"));
+			nota.setNome(rs.getString("nome"));
+			Calendar data = Calendar.getInstance();
+			nota.setDescri(rs.getString("descri"));
+			data.setTime(rs.getDate("data"));
+			nota.setData(data);
+			notas.add(nota);
+		}
+
+	rs.close();
+	stmt.close();
+	} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	}
+	return notas;
+}
+	
+public List<Notas> getSearch(String titulo){
+		
+		String sql = "SELECT * FROM Notas WHERE  nome =  ? or descri = ?";
+		List<Notas> notas = new ArrayList<Notas>();
+		try {
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setString(1,titulo);
+		stmt.setString(2,titulo);
 		ResultSet rs = stmt.executeQuery();
 
 		

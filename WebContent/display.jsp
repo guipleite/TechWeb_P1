@@ -149,6 +149,13 @@ function closeForm() {
 </body>
   
   <div class="main">
+  
+  	   <form action="Procurar">
+      <input type="text" placeholder="Procure um título ou descrição de algum evento..." name="titulo">
+      <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
+	  <input type="submit" class="form form-Save" value="Pesquisar">      </form>
+  
+  
       <section class="card-container">
       
 				<%@ page import="java.util.*,br.insper.noteblock.*" %>

@@ -2,7 +2,7 @@ package br.insper.noteblock;
 
 import java.util.Calendar;
 
-public class Notas {
+public class Notas implements java.lang.Comparable<Notas>{
 	
 	private Integer iduser;
 	private Integer id;
@@ -42,5 +42,12 @@ public class Notas {
 	public void setDescri(String descri) {
 		this.descri = descri;
 		}
+	
+	// Para ordenar notas criar um método de comparação
+	  @Override
+	  public int compareTo(Notas nota) {
+		    return getData().compareTo(nota.getData());
+		  }
+	  
 
 }
