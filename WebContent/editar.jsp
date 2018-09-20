@@ -25,20 +25,6 @@
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
-
-.back-button {
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 90%;
-  left: -1%;
-}
-
-/* The popup form - hidden by default */
-
 </style> 
 <body>	
 

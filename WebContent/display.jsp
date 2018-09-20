@@ -146,7 +146,7 @@ function closeForm() {
  <form action="AttributePasser">
           <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
           <input style="display: none" type="text" name="local" value="/filtro.jsp">
-		  <input type="image" src="https://www.materialui.co/materialIcons/action/search_white_72x72.png" width="68" height="68" class="filter-button" ></input>
+		  <input type="image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADzSURBVGhD7Zm7DQJBDESXlA4IiYhAohECiqAJiqAJuiAkoQ9qIAVmsg0ceO/2Y8E86WUreyydJrkkhBA/wwXegslMxdzhJ5jMVIwOaeikQw7wFExmEiIqG2h9ty3lzuos4QNabdJC7uLOJqzgE1qLa8od3NWUPXxBK0ANOZs7unCEb2gFmSNncnZXztAKM0fO7M4CXqEVaIqcxZlDqNVkTRvKy9wm69JQXqY2WdeG8lLaZEMayktJkw1pKC/eJhvaUF520Aqfyzfh2UIrfC7fhEeHREOHREOHREOHREOHREOHREOHRGMNrR+ZuXwjhBB/S0pfV1oOHTYvl4EAAAAASUVORK5CYII=" width="68" height="68" class="filter-button" ></input>
  </form> 
 </div>
 
