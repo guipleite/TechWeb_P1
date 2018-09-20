@@ -20,7 +20,7 @@
 	  Usuario atual = dao.showUser((Integer.parseInt((String)request.getAttribute("uid"))));%>
 	  	<input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
 	    <input type="text" name="user" value="<%=atual.getUser()%>">
-	    <input type="senha" name="senha" value="<%=atual.getSenha()%>">
+	    <input type="text" name="senha" value="<%=atual.getSenha()%>">
 	    <input type="submit" name="alterar" class="login login-submit" value="Alterar dados">
 	  </form>
 	</div>

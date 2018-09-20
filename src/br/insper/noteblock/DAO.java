@@ -25,9 +25,9 @@ public DAO() {
 	}
 	 try {
 		connection = DriverManager.getConnection(
-		//"jdbc:mysql://localhost/EventNoter", "root", "116319"
+		"jdbc:mysql://localhost/EventNoter", "root", "116319"
 		//"jdbc:mysql://google/EventNoter?useSSL=false&amp;cloudSqlInstance=noteblock-216814:southamerica-east1:myinstance&amp;socketFactory=com.google.cloud.sql.mysql.SocketFactory&amp;user=root&amp;password=116319"//google cloud
-		"jdbc:mysql://google/EventNoter?cloudSqlnstance=noteblock-216814:southamerica-east1:myinstance&socketFactory=com.google.cloud.sql.mysql.SocketFactory&user=root&password=116319&useSSL=false"
+		//"jdbc:mysql://google/EventNoter?cloudSqlnstance=noteblock-216814:southamerica-east1:myinstance&socketFactory=com.google.cloud.sql.mysql.SocketFactory&user=root&password=116319&useSSL=false"
 
 				
 				);
