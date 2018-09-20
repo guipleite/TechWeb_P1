@@ -25,7 +25,7 @@ public DAO() {
 	}
 	 try {
 		connection = DriverManager.getConnection(
-		"jdbc:mysql://localhost/EventNote", "root", "TecWeb4sem2018");
+		"jdbc:mysql://localhost/EventNoter", "root", "TecWeb4sem2018");
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -49,6 +49,7 @@ public DAO() {
 			nota.setDescri(rs.getString("descri"));
 			data.setTime(rs.getDate("data"));
 			nota.setData(data);
+			nota.setTipo(rs.getString("tipo"));
 			notas.add(nota);
 		
 		}
@@ -92,6 +93,7 @@ public DAO() {
 			nota.setDescri(rs.getString("descri"));
 			data.setTime(rs.getDate("data"));
 			nota.setData(data);
+			nota.setTipo(rs.getString("tipo"));
 			notas.add(nota);
 		}
 
@@ -124,6 +126,7 @@ public List<Notas> getSearch(String titulo){
 			nota.setDescri(rs.getString("descri"));
 			data.setTime(rs.getDate("data"));
 			nota.setData(data);
+			nota.setTipo(rs.getString("tipo"));
 			notas.add(nota);
 		}
 
@@ -139,14 +142,15 @@ public List<Notas> getSearch(String titulo){
 	
 	public void adiciona(Notas nota) {
 		String sql = "INSERT INTO Notas" +
-		"(nome,data,descri,userid) values(?,?,?,?)";
+		"(nome,data,descri,tipo,userid) values(?,?,?,?,?)";
 		try {
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setString(1,nota.getNome());
 		stmt.setDate(2, new java.sql.Date(
 				nota.getData().getTimeInMillis()));
 		stmt.setString(3,nota.getDescri());
-		stmt.setInt(4,nota.getIduser());
+		stmt.setString(4,nota.getTipo());
+		stmt.setInt(5,nota.getIduser());
 		stmt.execute();
 		stmt.close();
 		} catch (SQLException e) {
@@ -201,14 +205,15 @@ public List<Notas> getSearch(String titulo){
 	
 	public void altera(Notas nota) {
 		String sql = "UPDATE Notas SET " +
-		 "nome=?, data=? ,descri=? WHERE id=?";
+		 "nome=?, data=? ,descri=? ,tipo=? WHERE id=?";
 		try {
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setString(1, nota.getNome());
 		stmt.setDate(2, new Date(nota.getData()
 				.getTimeInMillis()));
 		stmt.setString(3,nota.getDescri());
-		stmt.setInt(4, nota.getId());
+		stmt.setString(4,nota.getTipo());
+		stmt.setInt(5, nota.getId());
 		stmt.execute();
 		stmt.close();
 		} catch (SQLException e) {

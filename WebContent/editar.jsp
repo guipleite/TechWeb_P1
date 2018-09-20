@@ -50,14 +50,25 @@ body {font-family: Arial, Helvetica, sans-serif;}
 		<% DAO dao = new DAO();
 		 List<Notas> Notas = dao.getLista();
 		 for (Notas nota : Notas ) {
-			 if(nota.getIduser()==Integer.parseInt(request.getParameter("uid"))){%>
+			 if(nota.getIduser()==Integer.parseInt(request.getParameter("uid"))){
+				 String cor = "erro-tipo não existente";
+				 if (nota.getTipo().equals("urg")){
+				 	cor = "background-color:red";}
+				 if (nota.getTipo().equals("emd")){
+					 	cor = "background-color:green";}
+				 if (nota.getTipo().equals("atr")){
+					 	cor = "background-color:yellow";}%>
 			<form action="Alterar">
-			  <article class="card">
+			  <article class="card" style=<%=cor%>>
               	<header class="card__title">
               		<input type="text" name="nome" placeholder="<%=nota.getNome()%>"><br>
               		<input type="date" name="data" placeholder="<%=nota.getData()%>"><br>
               		<input type="text" name="descri" placeholder="<%=nota.getDescri()%>"><br>
-              		
+              		<select name="tipo">
+					  <option value="urg">Urgente</option>
+					  <option value="emd">Em data</option>
+					  <option value="atr">Atrasado</option>
+					</select>
         			<br>
               	</header>
               

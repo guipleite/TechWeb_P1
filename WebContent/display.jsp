@@ -25,13 +25,19 @@
         <br>
         <input type="date" id="myDate" name="data" value="Data">
         <br>
+        <select name="tipo">
+		  <option value="urg">Urgente</option>
+		  <option value="emd">Em data</option>
+		  <option value="atr">Atrasado</option>
+		</select>
+        <br><br>
         <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
         <input type="submit" name="Save" class="form form-Save" value="Adicionar"> 
       </form>
        <form action="AttributePasser">
           <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
           <input style="display: none" type="text" name="local" value="/editar.jsp">
-	      <input type="submit" class="form form-Save" value="Editar">
+	      <input type="submit" class="form form-Save" value="Editar eventos">
       </form>  
   
 <style>
@@ -116,7 +122,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
       <form action="AttributePasser">
           <input style="display: none" type="text" name="uid" value="<%=request.getAttribute("uid")%>">
           <input style="display: none" type="text" name="local" value="/altdados.jsp">
-	      <input type="submit" class="form form-Save" value="Editar">
+	      <input type="submit" class="form form-Save" value="Editar conta">
       </form> 
     
     <form action=DelUsuario>
@@ -164,9 +170,18 @@ function closeForm() {
 		DAO dao = new DAO();
 		 List<Notas> Notas = dao.getLista();
 		 for (Notas nota : Notas ) {
-			 if(nota.getIduser().equals(Integer.parseInt((String)request.getAttribute("uid")))){%>
+			 if(nota.getIduser().equals(Integer.parseInt((String)request.getAttribute("uid")))){
+			 String cor = "erro-tipo não existente";
+			 if (nota.getTipo().equals("urg")){
+			 	cor = "background-color:red";}
+			 if (nota.getTipo().equals("emd")){
+				 	cor = "background-color:green";}
+			 if (nota.getTipo().equals("atr")){
+				 	cor = "background-color:yellow";}
 
-			  <article class="card">
+			 %>
+		
+			  <article class="card" style=<%=cor%>>
               	<header class="card__title">
                   	<h3><%=nota.getNome()%></h3>
                   	<h6><%=nota.getDescri()%></h6>

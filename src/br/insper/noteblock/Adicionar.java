@@ -53,6 +53,8 @@ public class Adicionar extends HttpServlet {
 		 dataNota.setTime(data);
 		 nota.setData(dataNota);
 		
+		 nota.setTipo(request.getParameter("tipo"));
+		 
 		 
 		 /////////
 		 nota.setIduser(Integer.parseInt(request.getParameter("uid")));

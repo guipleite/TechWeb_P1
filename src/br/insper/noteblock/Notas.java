@@ -9,7 +9,7 @@ public class Notas implements java.lang.Comparable<Notas>{
 	private String nome;
 	private Calendar data;
 	private String descri;
-	
+	private String tipo;
 	
 	
 	public Integer getIduser() {
@@ -41,6 +41,12 @@ public class Notas implements java.lang.Comparable<Notas>{
 		}
 	public void setDescri(String descri) {
 		this.descri = descri;
+		}
+	public String getTipo() {
+		return this.tipo;
+		}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 		}
 	
 	// Para ordenar notas criar um método de comparação

@@ -65,9 +65,17 @@ body {font-family: Arial, Helvetica, sans-serif;}
 		
 		 List<Notas> Notas = dao.getSearch(tit);
 		 for (Notas nota : Notas ) { 
-		 	if(nota.getIduser().equals(Integer.parseInt((String)request.getAttribute("uid")))){%>
+		 	if(nota.getIduser().equals(Integer.parseInt((String)request.getAttribute("uid")))){
+				 String cor = "erro-tipo não existente";
+				 if (nota.getTipo().equals("urg")){
+				 	cor = "background-color:red";}
+				 if (nota.getTipo().equals("emd")){
+					 	cor = "background-color:green";}
+				 if (nota.getTipo().equals("atr")){
+					 	cor = "background-color:yellow";}
+		 	%>
 
-			  <article class="card">
+			  <article class="card" style=<%=cor%>>
               	<header class="card__title">
                   	<h3><%=nota.getNome()%></h3>
                   	<h6><%=nota.getDescri()%></h6>
